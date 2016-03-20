@@ -1,4 +1,4 @@
-package CheckoutSimulator;
+package simulation;
 
 /**
  *
@@ -6,11 +6,15 @@ package CheckoutSimulator;
  */
 public class CheckoutFrame extends javax.swing.JFrame {
 
+    
+    Shopper consumer;
+    CheckOutLine line;
     /**
      * Creates new form NewJFrame
      */
     public CheckoutFrame() {
         initComponents();
+        line = new CheckOutLine();
     }
 
     /**
@@ -23,6 +27,8 @@ public class CheckoutFrame extends javax.swing.JFrame {
     private void initComponents() {
 
         CheckoutLine1 = new javax.swing.JProgressBar();
+        addConsumerButton = new javax.swing.JButton();
+        processButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -32,13 +38,31 @@ public class CheckoutFrame extends javax.swing.JFrame {
             }
         });
 
+        addConsumerButton.setText("Add Consumer");
+        addConsumerButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addConsumerButtonActionPerformed(evt);
+            }
+        });
+
+        processButton.setText("Process Queue");
+        processButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                processButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(119, 119, 119)
-                .addComponent(CheckoutLine1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(CheckoutLine1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(processButton)
+                        .addComponent(addConsumerButton)))
                 .addContainerGap(135, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -46,7 +70,11 @@ public class CheckoutFrame extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(112, 112, 112)
                 .addComponent(CheckoutLine1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(174, Short.MAX_VALUE))
+                .addGap(31, 31, 31)
+                .addComponent(addConsumerButton)
+                .addGap(27, 27, 27)
+                .addComponent(processButton)
+                .addContainerGap(70, Short.MAX_VALUE))
         );
 
         pack();
@@ -55,6 +83,22 @@ public class CheckoutFrame extends javax.swing.JFrame {
     private void CheckoutLine1PropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_CheckoutLine1PropertyChange
         // TODO add your handling code here:
     }//GEN-LAST:event_CheckoutLine1PropertyChange
+
+    private void addConsumerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addConsumerButtonActionPerformed
+       consumer = new Shopper();
+       line.addConsumer(consumer);
+        System.out.println(line.getConsumerCount());
+    }//GEN-LAST:event_addConsumerButtonActionPerformed
+
+    private void processButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_processButtonActionPerformed
+        
+        while(line.getConsumerCount() != 0){
+            
+            System.out.println("Serving customer with " + line.getCurrentConsumerItemCount() + " items");
+            line.processConsumer();
+            
+        }
+    }//GEN-LAST:event_processButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -94,5 +138,7 @@ public class CheckoutFrame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JProgressBar CheckoutLine1;
+    private javax.swing.JButton addConsumerButton;
+    private javax.swing.JButton processButton;
     // End of variables declaration//GEN-END:variables
 }

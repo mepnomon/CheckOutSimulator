@@ -1,4 +1,6 @@
-package checkoutsimulator;
+package simulation;
+
+import simulation.Shopper;
 
 /**
  * Date: 19-Mar-2016

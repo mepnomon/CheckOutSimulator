@@ -1,4 +1,4 @@
-package checkoutsimulator;
+package simulation;
 
 import java.util.Random;
 

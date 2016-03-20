@@ -1,5 +1,8 @@
-import checkoutsimulator.*;
+package simulation;
 
+
+
+import simulation.*;
 import java.util.Timer;
 
 /**

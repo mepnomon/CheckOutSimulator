@@ -1,5 +1,6 @@
-package checkoutsimulator;
+package simulation;
 
+import simulation.Shopper;
 import java.sql.Time;
 import java.util.LinkedList;
 import java.util.Queue;
@@ -61,7 +62,7 @@ public class CheckOutLine {
         int delay = checkoutLine.peek().getItemCount();
               
         try {
-            Thread.sleep(1000*delay);
+            Thread.sleep(100*delay);
         } catch (InterruptedException ex) {
             Logger.getLogger(CheckOutLine.class.getName()).log(Level.SEVERE, null, ex);
         }
