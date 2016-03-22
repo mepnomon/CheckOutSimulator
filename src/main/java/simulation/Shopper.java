@@ -1,5 +1,6 @@
 package simulation;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 /**
@@ -33,5 +34,15 @@ public class Shopper {
     public int getItemCount(){  
         
         return ITEMS;
+    }
+    
+    
+    /**
+     * Shopper chooses checkout queue.
+     * Sort array by number of global items.
+     */
+    public void chooseQueue(ArrayList <CheckOutLine> checkOuts){
+        
+        
     }
 }
