@@ -1,10 +1,7 @@
 package simulation;
 
-import simulation.Shopper;
-import java.sql.Time;
 import java.util.LinkedList;
 import java.util.Queue;
-import java.util.Timer;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -13,7 +10,7 @@ import java.util.logging.Logger;
  * 
  * @author eeu436
  */
-public class CheckOutLine {
+public class CheckOutLine implements Runnable{
     
     Queue<Shopper> checkoutLine;
     
@@ -54,10 +51,6 @@ public class CheckOutLine {
      * Takes consumer's time tag and waits.
      */
     public void processConsumer(){
-        Time time;
-        //get the time allocated and wait until the end of time
-        //while time < maxTime, wait for time. or something.
-        //checkoutLine.poll();
         
         int delay = checkoutLine.peek().getItemCount();
               
@@ -66,11 +59,6 @@ public class CheckOutLine {
         } catch (InterruptedException ex) {
             Logger.getLogger(CheckOutLine.class.getName()).log(Level.SEVERE, null, ex);
         }
-        checkoutLine.poll();
-    }
-    
-    private void releaseConsumer(){
-        
         checkoutLine.poll();
     }
     
@@ -88,6 +76,11 @@ public class CheckOutLine {
         }
         
         return globalItemCount;
+    }
+
+    @Override
+    public void run() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
    
 }

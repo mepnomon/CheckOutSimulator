@@ -28,6 +28,7 @@ public class CheckoutTester {
             //line.addConsumer(consumer);
             System.out.println("Ready to choose a check-out line");
             consumers.add(consumer);
+            //line.add(consumer);
         }
         
 //        System.out.println("No. of consumers in queue: " + 
