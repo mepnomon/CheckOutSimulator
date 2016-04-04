@@ -95,7 +95,7 @@ public class CheckoutFrame extends javax.swing.JFrame {
         while(line.getConsumerCount() != 0){
             
             System.out.println("Serving customer with " + line.getCurrentConsumerItemCount() + " items");
-            line.processConsumer();
+            //line.processConsumer();
             
         }
     }//GEN-LAST:event_processButtonActionPerformed

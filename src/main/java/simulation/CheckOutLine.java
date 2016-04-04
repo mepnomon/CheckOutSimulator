@@ -10,13 +10,17 @@ import java.util.logging.Logger;
  * 
  * @author eeu436
  */
-public class CheckOutLine implements Runnable{
+public class CheckOutLine{
     
-    Queue<Shopper> checkoutLine;
+    Queue<Shopper> line;
     
     public CheckOutLine(){
         
-        checkoutLine = new LinkedList<>();
+        line = new LinkedList<>();
+//        Runnable r = new CheckoutClerk(line);
+//        Thread t = new Thread(r);
+//        t.start();
+//        
     }
     
     /**
@@ -25,7 +29,7 @@ public class CheckOutLine implements Runnable{
      */
     public void addConsumer(Shopper consumer){
         
-        checkoutLine.add(consumer);
+        line.add(consumer);
     }
     
     /**
@@ -34,7 +38,7 @@ public class CheckOutLine implements Runnable{
      */
     public int getConsumerCount(){
         
-        return checkoutLine.size();
+        return line.size();
     }
     
     /**
@@ -43,23 +47,23 @@ public class CheckOutLine implements Runnable{
      */
     public int getCurrentConsumerItemCount(){
         
-        return checkoutLine.peek().getItemCount();
+        return line.peek().getItemCount();
     }
     
     /**
      * Method to process consumer.
      * Takes consumer's time tag and waits.
      */
-    public void processConsumer(){
+    public void processConsumer(Shopper s){
         
-        int delay = checkoutLine.peek().getItemCount();
+        int delay = line.peek().getItemCount();
               
         try {
             Thread.sleep(100*delay);
         } catch (InterruptedException ex) {
             Logger.getLogger(CheckOutLine.class.getName()).log(Level.SEVERE, null, ex);
         }
-        checkoutLine.poll();
+        line.poll();
     }
     
     /**
@@ -70,17 +74,71 @@ public class CheckOutLine implements Runnable{
         
         int globalItemCount = 0;
         
-        for(Shopper s : checkoutLine){
+        for(Shopper s : line){
             
             globalItemCount += s.getItemCount();
         }
         
         return globalItemCount;
     }
-
-    @Override
-    public void run() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    
+    public boolean isFrontOccupied(){
+        
+        if(line.peek() == null){
+            return false;
+        } else {
+            return true;
+        }
     }
-   
-}
+    
+    public Shopper getFront(){
+        
+        Shopper s;
+        s = line.peek();
+        return s;
+    }
+     
+    public void removeFront(){
+        
+        line.poll();
+    }
+} 
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+//    private void pauseThread(Shopper s){
+//        
+//        try {
+//            Thread.sleep(s.getItemCount()*100);
+//            System.out.println("Thread resumed");
+//        } catch (InterruptedException ex) {
+//            Logger.getLogger(CheckOutLine.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//        
+//    }
+
+//    @Override
+//    public void run() {
+//        System.out.println("Thread started");
+//        while(true){
+//            
+//            if(isFrontOccupied()){
+//                Shopper s = getFront();
+//                pauseThread(s);
+//            } else {
+//            //do nothing
+//            } 
+//        }
+//    }
+

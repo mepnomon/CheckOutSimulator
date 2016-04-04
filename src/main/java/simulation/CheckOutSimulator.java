@@ -32,6 +32,9 @@ public class CheckOutSimulator {
         for(int i = 0; i < arr.length; i++){
             
             CheckOutLine line = new CheckOutLine();
+            Runnable r = new CheckoutClerk(line);
+            Thread t = new Thread(r);
+            t.start();
             arr[i] = line;
         }
     }
@@ -98,7 +101,7 @@ public class CheckOutSimulator {
        private ProcessCheckOut(CheckOutLine line){
            
            this.line = line;
-           line.processConsumer();
+           //line.processConsumer();
        }
     }
 }
