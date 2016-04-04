@@ -18,5 +18,15 @@ public class CheckOutSimulatorTest {
         System.out.print("Enter number of shoppers: ");
         int shopperCount = sc.nextInt();
         simulation.addShoppers(shopperCount);
+        
+        sc.nextLine();
+        while(true){
+            
+            if(sc.nextLine().charAt(0) == 'a'){
+                
+                System.out.println("Processing items");
+                simulation.processCustomerPerArr();
+            }
+        }
     } 
 }

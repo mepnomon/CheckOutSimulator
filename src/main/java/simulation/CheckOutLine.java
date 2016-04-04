@@ -36,7 +36,7 @@ public class CheckOutLine{
      * Retrieves the count of consumers.
      * @return consumer count
      */
-    public int getConsumerCount(){
+    public int getCustomerCount(){
         
         return line.size();
     }
@@ -47,23 +47,12 @@ public class CheckOutLine{
      */
     public int getCurrentConsumerItemCount(){
         
-        return line.peek().getItemCount();
-    }
-    
-    /**
-     * Method to process consumer.
-     * Takes consumer's time tag and waits.
-     */
-    public void processConsumer(Customer s){
-        
-        int delay = line.peek().getItemCount();
-              
-        try {
-            Thread.sleep(100*delay);
-        } catch (InterruptedException ex) {
-            Logger.getLogger(CheckOutLine.class.getName()).log(Level.SEVERE, null, ex);
+        if(line.peek() != null){
+            return line.peek().getItemCount();
+        } else {
+//            ..System.out.println("Adding new customer with " + line.peek().getItemCount());
+            return 0;
         }
-        line.poll();
     }
     
     /**
@@ -82,77 +71,23 @@ public class CheckOutLine{
         return globalItemCount;
     }
     
-    public boolean isFrontOccupied(){
+    /**
+     * Processes a customer, until items == 0
+     * Then removes customer.
+     */
+    public void processCustomer(){
         
-        if(line.peek() == null){
-            return false;
-        } else {
-            return true;
-        }
-    }
-    
-    public Customer getFront(){
-        
-        Customer s;
-        s = line.peek();
-        return s;
-    }
-     
-    public void removeFront(){
-       
         if(line.peek() != null){
             
+            if(line.peek().getItemCount() > 0){
+             
+                line.peek().removeItem();
+            
+            } else {
+                
+                line.poll();
+            } 
         }
     }
-        
-    /**
-     * returns the current count of customers
-     */
-    private int getCustomerCount(){
-        
-       return line.size();
-    }
-    
-    private void processCustomer(){
-        
-        
-    }
-} 
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-//    private void pauseThread(Shopper s){
-//        
-//        try {
-//            Thread.sleep(s.getItemCount()*100);
-//            System.out.println("Thread resumed");
-//        } catch (InterruptedException ex) {
-//            Logger.getLogger(CheckOutLine.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-//        
-//    }
-
-//    @Override
-//    public void run() {
-//        System.out.println("Thread started");
-//        while(true){
-//            
-//            if(isFrontOccupied()){
-//                Shopper s = getFront();
-//                pauseThread(s);
-//            } else {
-//            //do nothing
-//            } 
-//        }
-//    }
+}
 

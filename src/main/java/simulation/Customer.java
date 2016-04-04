@@ -9,8 +9,8 @@ import java.util.Random;
  */
 public class Customer {
     
-    private final int ITEMS;
-    private final int MAX_ITEMS = 50;
+    private int items;
+    private final int MAX_ITEMS = 10;
     private final int MIN_ITEMS = 1;
     private final Random GENERATOR;
     
@@ -22,7 +22,7 @@ public class Customer {
     public Customer(){
         
         GENERATOR = new Random();
-        ITEMS = GENERATOR.nextInt(MAX_ITEMS) + MIN_ITEMS;
+        items = GENERATOR.nextInt(MAX_ITEMS) + MIN_ITEMS;
     }
     
     /**
@@ -32,13 +32,19 @@ public class Customer {
      */
     public int getItemCount(){  
         
-        return ITEMS;
+        return items;
     }
     
-    public void removeItem() throws InterruptedException{
+    public void removeItem(){
         
-        for(int i = ITEMS; i >= 0; i--){
-            Thread.sleep(100);
-        }
+        items--;
+    }
+    
+    public void chooseQueue(){
+        
+        int least = 0;
+        int i = 0;
+        int arrayNo = 0;
+        
     }
 }

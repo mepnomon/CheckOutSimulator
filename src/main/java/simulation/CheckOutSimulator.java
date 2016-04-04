@@ -32,9 +32,6 @@ public class CheckOutSimulator {
         for(int i = 0; i < arr.length; i++){
             
             CheckOutLine line = new CheckOutLine();
-            Runnable r = new CheckoutClerk(line);
-            Thread t = new Thread(r);
-            t.start();
             arr[i] = line;
         }
     }
@@ -94,14 +91,21 @@ public class CheckOutSimulator {
         l.addConsumer(s);
     }
     
-    private class ProcessCheckOut extends Thread{
-
-       CheckOutLine line;
-       
-       private ProcessCheckOut(CheckOutLine line){
-           
-           this.line = line;
-           //line.processConsumer();
-       }
+    public CheckOutLine[] getArray(){
+        
+        return arr;
+    }
+    
+    public void processCustomerPerArr(){
+        
+        for(CheckOutLine c : arr){
+            
+            try{
+                c.processCustomer();
+                System.out.println(c.getCurrentConsumerItemCount());
+            }catch(NullPointerException e){
+                System.out.println(e + " caught");
+            }
+        }
     }
 }
