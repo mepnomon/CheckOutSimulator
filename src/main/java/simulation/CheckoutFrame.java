@@ -7,7 +7,7 @@ package simulation;
 public class CheckoutFrame extends javax.swing.JFrame {
 
     
-    Shopper consumer;
+    Customer consumer;
     CheckOutLine line;
     /**
      * Creates new form NewJFrame
@@ -85,7 +85,7 @@ public class CheckoutFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_CheckoutLine1PropertyChange
 
     private void addConsumerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addConsumerButtonActionPerformed
-       consumer = new Shopper();
+       consumer = new Customer();
        line.addConsumer(consumer);
         System.out.println(line.getConsumerCount());
     }//GEN-LAST:event_addConsumerButtonActionPerformed

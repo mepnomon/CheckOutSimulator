@@ -12,7 +12,7 @@ import java.util.logging.Logger;
  */
 public class CheckOutLine{
     
-    Queue<Shopper> line;
+    Queue<Customer> line;
     
     public CheckOutLine(){
         
@@ -27,7 +27,7 @@ public class CheckOutLine{
      * Adds consumer to checkout queue.
      * @param consumer
      */
-    public void addConsumer(Shopper consumer){
+    public void addConsumer(Customer consumer){
         
         line.add(consumer);
     }
@@ -54,7 +54,7 @@ public class CheckOutLine{
      * Method to process consumer.
      * Takes consumer's time tag and waits.
      */
-    public void processConsumer(Shopper s){
+    public void processConsumer(Customer s){
         
         int delay = line.peek().getItemCount();
               
@@ -74,7 +74,7 @@ public class CheckOutLine{
         
         int globalItemCount = 0;
         
-        for(Shopper s : line){
+        for(Customer s : line){
             
             globalItemCount += s.getItemCount();
         }
@@ -91,19 +91,33 @@ public class CheckOutLine{
         }
     }
     
-    public Shopper getFront(){
+    public Customer getFront(){
         
-        Shopper s;
+        Customer s;
         s = line.peek();
         return s;
     }
      
     public void removeFront(){
+       
+        if(line.peek() != null){
+            
+        }
+    }
         
-        line.poll();
+    /**
+     * returns the current count of customers
+     */
+    private int getCustomerCount(){
+        
+       return line.size();
+    }
+    
+    private void processCustomer(){
+        
+        
     }
 } 
-    
     
     
     

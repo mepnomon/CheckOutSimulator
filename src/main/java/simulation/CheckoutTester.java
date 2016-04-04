@@ -11,16 +11,16 @@ import java.util.ArrayList;
  */
 public class CheckoutTester {
    
-    private static ArrayList<Shopper> consumers = new ArrayList();
+    private static ArrayList<Customer> consumers = new ArrayList();
     private static CheckOutLine line = new CheckOutLine();
-    private static Shopper consumer;
+    private static Customer consumer;
     
     public static void main(String[] args){
               
         //creates 10 Shoppers.
         for(int i = 0; i < 50; i++){ //O(1)
             
-            consumer = new Shopper();
+            consumer = new Customer();
             
             System.out.println("Generating shopper with " + 
                     consumer.getItemCount() + " items");

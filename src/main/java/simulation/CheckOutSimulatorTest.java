@@ -10,7 +10,7 @@ public class CheckOutSimulatorTest {
     
     public static void main(String[] args){
         
-        Shopper s = new Shopper();
+        Customer s = new Customer();
         Scanner sc = new Scanner(System.in);
         CheckOutSimulator simulation = new CheckOutSimulator();
         simulation.addCheckOutLines();

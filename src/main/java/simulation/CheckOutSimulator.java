@@ -13,8 +13,8 @@ import java.util.ArrayList;
  */
 public class CheckOutSimulator {
     
-    Shopper shoppers;
-    ArrayList <Shopper> consumers;
+    Customer shoppers;
+    ArrayList <Customer> consumers;
     CheckOutLine[] arr;
     
     public CheckOutSimulator(){
@@ -57,7 +57,7 @@ public class CheckOutSimulator {
     public void addShoppers(int shopperCount){
         
         for(int i = 0; i < shopperCount; i++){
-            Shopper consumer = new Shopper();
+            Customer consumer = new Customer();
             System.out.print(i + " ");
             System.out.println(consumer.getItemCount());
             consumers.add(consumer);
@@ -70,7 +70,7 @@ public class CheckOutSimulator {
      * Unsorted array.
      * @param s
      */
-    public void chooseLine(Shopper s){
+    public void chooseLine(Customer s){
         
         int least = 0;
         int i = 0;

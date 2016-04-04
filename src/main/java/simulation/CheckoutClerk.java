@@ -21,7 +21,7 @@ public class CheckoutClerk implements Runnable {
     private int itemCount;
     Timer timer;
     CheckOutLine line;
-    Shopper s;
+    Customer s;
     /**
      * Constructor for experimental Checkout Clerk.
      * @param line
