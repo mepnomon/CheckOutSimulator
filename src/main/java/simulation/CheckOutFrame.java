@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package simulation;
 
 /**
@@ -13,7 +8,8 @@ public class CheckOutFrame extends javax.swing.JFrame {
 
     CheckOutSimulator sim;
     /**
-     * Creates new form CheckOutFrame2
+     * Creates new form CheckOutFrame
+     * Instantiates Simulation Object.
      */
     public CheckOutFrame() {
         sim = new CheckOutSimulator();
@@ -39,7 +35,7 @@ public class CheckOutFrame extends javax.swing.JFrame {
         jProgressBar3 = new javax.swing.JProgressBar();
         jProgressBar4 = new javax.swing.JProgressBar();
         jProgressBar5 = new javax.swing.JProgressBar();
-        jButton1 = new javax.swing.JButton();
+        processBtn = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jList1 = new javax.swing.JList<>();
         shopperField = new javax.swing.JTextField();
@@ -61,10 +57,10 @@ public class CheckOutFrame extends javax.swing.JFrame {
 
         jLabel3.setText("Shoppers:");
 
-        jButton1.setText("Proceed");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        processBtn.setText("Process");
+        processBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                processBtnActionPerformed(evt);
             }
         });
 
@@ -109,7 +105,7 @@ public class CheckOutFrame extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jButton1))
+                                .addComponent(processBtn))
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                 .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 11, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
@@ -141,7 +137,7 @@ public class CheckOutFrame extends javax.swing.JFrame {
                                     .addComponent(jProgressBar2, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(26, 26, 26)
-                                .addComponent(jButton1))
+                                .addComponent(processBtn))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(jLabel2)
@@ -161,15 +157,19 @@ public class CheckOutFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * takes desired number of shoppers from user and triggers
+     * algorithm that adds each shopper to currently shortest queue.
+     * @param evt 
+     */
     private void addShopperBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addShopperBtnActionPerformed
         int num = Integer.parseInt(shopperField.getText());
-        //System.out.println(num);
         sim.addShoppers(num);
     }//GEN-LAST:event_addShopperBtnActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void processBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_processBtnActionPerformed
+        sim.processCustomerPerArr();
+    }//GEN-LAST:event_processBtnActionPerformed
 
     private void shopperFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_shopperFieldActionPerformed
         // TODO add your handling code here:
@@ -213,7 +213,6 @@ public class CheckOutFrame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addShopperBtn;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -224,6 +223,7 @@ public class CheckOutFrame extends javax.swing.JFrame {
     private javax.swing.JProgressBar jProgressBar4;
     private javax.swing.JProgressBar jProgressBar5;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JButton processBtn;
     private javax.swing.JTextField shopperField;
     // End of variables declaration//GEN-END:variables
 }
