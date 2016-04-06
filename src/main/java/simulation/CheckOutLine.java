@@ -2,8 +2,6 @@ package simulation;
 
 import java.util.LinkedList;
 import java.util.Queue;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  * Date: 19-Mar-2016
@@ -45,12 +43,11 @@ public class CheckOutLine{
      * The item count of the consumer at the head of the queue.
      * @return the item count
      */
-    public int getCurrentConsumerItemCount(){
+    public int getFrontCustomerItemCount(){
         
         if(line.peek() != null){
             return line.peek().getItemCount();
         } else {
-//            ..System.out.println("Adding new customer with " + line.peek().getItemCount());
             return 0;
         }
     }
@@ -70,6 +67,8 @@ public class CheckOutLine{
         
         return globalItemCount;
     }
+    
+    
     
     /**
      * Processes a customer, until items == 0

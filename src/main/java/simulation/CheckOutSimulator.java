@@ -1,6 +1,7 @@
 package simulation;
 
 import java.util.ArrayList;
+import javax.swing.JProgressBar;
 
 /**
  * Date: 19-Mar-2016
@@ -102,10 +103,43 @@ public class CheckOutSimulator {
             
             try{
                 c.processCustomer();
-                System.out.println(c.getCurrentConsumerItemCount());
+                System.out.println(c.getFrontCustomerItemCount());
             }catch(NullPointerException e){
                 System.out.println(e + " caught");
             }
         }
     }
+        
+    /**
+     * Retrieves the global item count for each checkout line individually.
+     * @return an array containing the global item counts.
+     */
+    public int getCurrentGlobalItemsPerQueue(int arrNo){
+         
+        return arr[arrNo].getCurrentGlobalItemCount();
+    }
+    
+    public int getCurrentQueueFrontItems(int arrNo){
+
+        return arr[arrNo].getFrontCustomerItemCount();
+    }
+    
+    public int getCustomerCountPerQueue(int arrNo){
+        
+        return arr[arrNo].getCustomerCount();
+    }
+    
+    
+    public int getGlobalCustomerItemCount(){
+        
+        int items = 0;
+        
+        for(int i = 0; i < arr.length; i++){
+            
+            items += arr[i].getCurrentGlobalItemCount();
+        }
+        return items;
+    }
+    
+    //public int get
 }
