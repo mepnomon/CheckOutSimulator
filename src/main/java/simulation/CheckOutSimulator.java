@@ -64,7 +64,7 @@ public class CheckOutSimulator {
     }
     
     /**
-     * This bit will be O(n log n)
+     * This bit will be O(n)
      * Unsorted array.
      * @param s
      */
@@ -92,11 +92,18 @@ public class CheckOutSimulator {
         l.addConsumer(s);
     }
     
+    /**
+     * 
+     * @return 
+     */
     public CheckOutLine[] getArray(){
         
         return arr;
     }
     
+    /**
+     * 
+     */
     public void processCustomerPerArr(){
         
         for(CheckOutLine c : arr){
@@ -129,7 +136,10 @@ public class CheckOutSimulator {
         return arr[arrNo].getCustomerCount();
     }
     
-    
+    /**
+     * 
+     * @return 
+     */
     public int getGlobalCustomerItemCount(){
         
         int items = 0;
@@ -141,5 +151,16 @@ public class CheckOutSimulator {
         return items;
     }
     
-    //public int get
+   /**
+    * 
+    * @return 
+    */
+    public int getGlobalCustomerCount(){
+        int count = 0;
+        for(CheckOutLine l : arr){
+            
+            count += l.getCustomerCount();
+        }
+        return count;
+    }
 }
