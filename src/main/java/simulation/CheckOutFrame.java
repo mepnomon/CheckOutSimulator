@@ -19,6 +19,11 @@ public class CheckOutFrame extends javax.swing.JFrame {
         sim = new CheckOutSimulator();
         sim.addCheckOutLines();
         initComponents();
+        jProgressBar1.setMaximum(MAX_ITEMS);
+        jProgressBar2.setMaximum(MAX_ITEMS);
+        jProgressBar3.setMaximum(MAX_ITEMS);
+        jProgressBar4.setMaximum(MAX_ITEMS);
+        jProgressBar5.setMaximum(MAX_ITEMS);
     }
 
     /**
@@ -42,11 +47,9 @@ public class CheckOutFrame extends javax.swing.JFrame {
         jProgressBar5 = new javax.swing.JProgressBar();
         processBtn = new javax.swing.JButton();
         shopperField = new javax.swing.JTextField();
-        canvas1 = new java.awt.Canvas();
         jLabel4 = new javax.swing.JLabel();
         globalItemsLabel = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
         checkOutItems2 = new javax.swing.JLabel();
         checkOutItems3 = new javax.swing.JLabel();
         checkOutItems4 = new javax.swing.JLabel();
@@ -54,7 +57,7 @@ public class CheckOutFrame extends javax.swing.JFrame {
         checkOutItems0 = new javax.swing.JLabel();
         globalCustomerCountLabel = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        checkOutCustomer1 = new javax.swing.JLabel();
+        checkOutICustomer1 = new javax.swing.JLabel();
         checkOutCustomer2 = new javax.swing.JLabel();
         checkOutCustomer3 = new javax.swing.JLabel();
         checkOutCustomer0 = new javax.swing.JLabel();
@@ -111,7 +114,7 @@ public class CheckOutFrame extends javax.swing.JFrame {
 
         jLabel7.setText("Customers left p. checkout:");
 
-        checkOutCustomer1.setText("0");
+        checkOutICustomer1.setText("0");
 
         checkOutCustomer2.setText("0");
 
@@ -130,8 +133,6 @@ public class CheckOutFrame extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(261, 261, 261)
-                        .addComponent(canvas1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -146,10 +147,7 @@ public class CheckOutFrame extends javax.swing.JFrame {
                                         .addComponent(checkOutItems3, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addComponent(checkOutItems4, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel7)
-                                        .addGap(82, 82, 82)
-                                        .addComponent(jLabel6))
+                                    .addComponent(jLabel7)
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 11, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(29, 29, 29)
@@ -164,14 +162,14 @@ public class CheckOutFrame extends javax.swing.JFrame {
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(checkOutCustomer0, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(checkOutCustomer1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(checkOutICustomer1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addComponent(checkOutCustomer2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addComponent(checkOutCustomer3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addComponent(checkOutCustomer4, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(0, 0, Short.MAX_VALUE))
+                                .addGap(0, 27, Short.MAX_VALUE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(43, 43, 43)
                                 .addComponent(processBtn)
@@ -211,63 +209,53 @@ public class CheckOutFrame extends javax.swing.JFrame {
                     .addComponent(jLabel1)
                     .addComponent(jLabel4)
                     .addComponent(globalItemsLabel))
+                .addGap(31, 31, 31)
+                .addComponent(jLabel5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(checkOutItems0)
+                    .addComponent(checkOutItems1)
+                    .addComponent(checkOutItems2)
+                    .addComponent(checkOutItems3)
+                    .addComponent(checkOutItems4))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel6)
-                        .addGap(41, 41, 41))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(115, 115, 115)
-                        .addComponent(canvas1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(31, 31, 31)
-                        .addComponent(jLabel5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(checkOutItems0)
-                            .addComponent(checkOutItems1)
-                            .addComponent(checkOutItems2)
-                            .addComponent(checkOutItems3)
-                            .addComponent(checkOutItems4))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jProgressBar3, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jProgressBar2, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jProgressBar5, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jProgressBar4, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(checkOutCustomer1)
-                            .addComponent(checkOutCustomer2)
-                            .addComponent(checkOutCustomer3)
-                            .addComponent(checkOutCustomer0)
-                            .addComponent(checkOutCustomer4))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel7)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(processBtn)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                    .addComponent(jProgressBar3, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jProgressBar2, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jProgressBar5, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jProgressBar4, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(checkOutICustomer1)
+                    .addComponent(checkOutCustomer2)
+                    .addComponent(checkOutCustomer3)
+                    .addComponent(checkOutCustomer0)
+                    .addComponent(checkOutCustomer4))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel7)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(processBtn)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     /**
-     * takes desired number of shoppers from user and triggers
+     * Event handler, takes desired number of shoppers from user and triggers
      * algorithm that adds each shopper to currently shortest queue.
      * @param evt 
      */
     private void addShopperBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addShopperBtnActionPerformed
         
         int num = Integer.parseInt(shopperField.getText());
-        sim.addShoppers(num);
+        sim.addCustomers(num);
         setValuesInInterface();
     }//GEN-LAST:event_addShopperBtnActionPerformed
 
     /**
-     * 
+     * Event handler for Process Button.
      * @param evt 
      */
     private void processBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_processBtnActionPerformed
@@ -277,7 +265,7 @@ public class CheckOutFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_processBtnActionPerformed
     
     /**
-     * 
+     * Changes values displayed in GUI.
      */
     private void setValuesInInterface(){
         
@@ -286,13 +274,7 @@ public class CheckOutFrame extends javax.swing.JFrame {
         jProgressBar3.setOrientation(JProgressBar.VERTICAL);
         jProgressBar4.setOrientation(JProgressBar.VERTICAL);
         jProgressBar5.setOrientation(JProgressBar.VERTICAL);
-        
-        jProgressBar1.setMaximum(MAX_ITEMS);
-        jProgressBar2.setMaximum(MAX_ITEMS);
-        jProgressBar3.setMaximum(MAX_ITEMS);
-        jProgressBar4.setMaximum(MAX_ITEMS);
-        jProgressBar5.setMaximum(MAX_ITEMS);
-        
+                
         globalItemsLabel.setText(Integer.toString(sim.getGlobalCustomerItemCount()));
         globalCustomerCountLabel.setText(Integer.toString(sim.getGlobalCustomerCount()));
         
@@ -309,7 +291,7 @@ public class CheckOutFrame extends javax.swing.JFrame {
         checkOutItems4.setText(Integer.toString(sim.getCurrentGlobalItemsPerQueue(4)));
         
         checkOutCustomer0.setText(Integer.toString(sim.getCustomerCountPerQueue(0)));
-        checkOutCustomer1.setText(Integer.toString(sim.getCustomerCountPerQueue(1)));
+        checkOutICustomer1.setText(Integer.toString(sim.getCustomerCountPerQueue(1)));
         checkOutCustomer2.setText(Integer.toString(sim.getCustomerCountPerQueue(2)));
         checkOutCustomer3.setText(Integer.toString(sim.getCustomerCountPerQueue(3)));
         checkOutCustomer4.setText(Integer.toString(sim.getCustomerCountPerQueue(4)));
@@ -357,12 +339,11 @@ public class CheckOutFrame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addShopperBtn;
-    private java.awt.Canvas canvas1;
     private javax.swing.JLabel checkOutCustomer0;
-    private javax.swing.JLabel checkOutCustomer1;
     private javax.swing.JLabel checkOutCustomer2;
     private javax.swing.JLabel checkOutCustomer3;
     private javax.swing.JLabel checkOutCustomer4;
+    private javax.swing.JLabel checkOutICustomer1;
     private javax.swing.JLabel checkOutItems0;
     private javax.swing.JLabel checkOutItems1;
     private javax.swing.JLabel checkOutItems2;
@@ -376,7 +357,6 @@ public class CheckOutFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JProgressBar jProgressBar1;
     private javax.swing.JProgressBar jProgressBar2;

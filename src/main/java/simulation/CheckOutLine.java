@@ -14,24 +14,20 @@ public class CheckOutLine{
     
     public CheckOutLine(){
         
-        line = new LinkedList<>();
-//        Runnable r = new CheckoutClerk(line);
-//        Thread t = new Thread(r);
-//        t.start();
-//        
+        line = new LinkedList<>(); 
     }
     
     /**
-     * Adds consumer to checkout queue.
-     * @param consumer
+     * Adds customer to checkout queue.
+     * @param c the customer
      */
-    public void addConsumer(Customer consumer){
+    public void addCustomer(Customer c){
         
-        line.add(consumer);
+        line.add(c);
     }
     
     /**
-     * Retrieves the count of consumers.
+     * Retrieves the count of customers.
      * @return consumer count
      */
     public int getCustomerCount(){
@@ -56,7 +52,7 @@ public class CheckOutLine{
      * Sums all items currently in the queue.
      * @return count of all items in queue.
      */
-    public int getCurrentGlobalItemCount(){
+    public int getLocalItemCount(){
         
         int globalItemCount = 0;
         

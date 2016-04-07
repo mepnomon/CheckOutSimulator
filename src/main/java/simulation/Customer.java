@@ -15,9 +15,9 @@ public class Customer {
     private final Random GENERATOR;
     
     /**
-     * Constructor for shopper.
-     * Attaches random item count to shopper.
-     * A shopper can hold up to 50 items (inclusive).
+     * Constructor for customer.
+     * Attaches random item count to customer.
+     * A customer can hold up to 10 items (inclusive).
      */
     public Customer(){
         
@@ -35,16 +35,11 @@ public class Customer {
         return items;
     }
     
+    /**
+     * Deletes 1 item, when called.
+     */
     public void removeItem(){
         
         items--;
-    }
-    
-    public void chooseQueue(){
-        
-        int least = 0;
-        int i = 0;
-        int arrayNo = 0;
-        
     }
 }

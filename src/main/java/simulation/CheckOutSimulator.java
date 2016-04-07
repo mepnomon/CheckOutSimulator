@@ -1,7 +1,6 @@
 package simulation;
 
 import java.util.ArrayList;
-import javax.swing.JProgressBar;
 
 /**
  * Date: 19-Mar-2016
@@ -18,6 +17,9 @@ public class CheckOutSimulator {
     ArrayList <Customer> consumers;
     CheckOutLine[] arr;
     
+    /**
+     * Constructor for CheckoutSimulator.
+     */
     public CheckOutSimulator(){
         
         arr = new CheckOutLine[5];
@@ -38,37 +40,26 @@ public class CheckOutSimulator {
     }
     
     /**
-     * Reads back created arrays
-     */
-    public void verifyArray(){
-        
-        for(CheckOutLine l : arr){
-            
-            System.out.println(l);
-        }
-    }
-    
-    /**
      * Adds desired number of shoppers
-     * @param shopperCount
+     * @param customerCount
      */
-    public void addShoppers(int shopperCount){
+    public void addCustomers(int customerCount){
         
-        for(int i = 0; i < shopperCount; i++){
-            Customer consumer = new Customer();
+        for(int i = 0; i < customerCount; i++){
+            Customer c = new Customer();
             System.out.print(i + " ");
-            System.out.println(consumer.getItemCount());
-            consumers.add(consumer);
-            chooseLine(consumer);
+            System.out.println(c.getItemCount());
+            consumers.add(c);
+            chooseLine(c);
         }
     }
     
     /**
      * This bit will be O(n)
      * Unsorted array.
-     * @param s
+     * @param c
      */
-    public void chooseLine(Customer s){
+    public void chooseLine(Customer c){
         
         int least = 0;
         int i = 0;
@@ -77,28 +68,19 @@ public class CheckOutSimulator {
         for(CheckOutLine l : arr){
         
             if(i == 0){
-                least = l.getCurrentGlobalItemCount();
+                least = l.getLocalItemCount();
                 
-            }else if(i > 0 && least > l.getCurrentGlobalItemCount()){
-                least = l.getCurrentGlobalItemCount(); 
+            }else if(i > 0 && least > l.getLocalItemCount()){
+                least = l.getLocalItemCount(); 
                 arrayNo = i;
             }
             i++;
-            System.out.println(l.getCurrentGlobalItemCount());
+            System.out.println(l.getLocalItemCount());
         }
         System.out.println("Queue with least items: " + least);
         System.out.println("Adding to check out no." + arrayNo);
         CheckOutLine l = arr[arrayNo];
-        l.addConsumer(s);
-    }
-    
-    /**
-     * 
-     * @return 
-     */
-    public CheckOutLine[] getArray(){
-        
-        return arr;
+        l.addCustomer(c);
     }
     
     /**
@@ -106,11 +88,11 @@ public class CheckOutSimulator {
      */
     public void processCustomerPerArr(){
         
-        for(CheckOutLine c : arr){
+        for(CheckOutLine l : arr){
             
             try{
-                c.processCustomer();
-                System.out.println(c.getFrontCustomerItemCount());
+                l.processCustomer();
+                //System.out.println(c.getFrontCustomerItemCount());
             }catch(NullPointerException e){
                 System.out.println(e + " caught");
             }
@@ -119,13 +101,18 @@ public class CheckOutSimulator {
         
     /**
      * Retrieves the global item count for each checkout line individually.
-     * @return an array containing the global item counts.
+     * @return the item count of each checkout line.
      */
     public int getCurrentGlobalItemsPerQueue(int arrNo){
          
-        return arr[arrNo].getCurrentGlobalItemCount();
+        return arr[arrNo].getLocalItemCount();
     }
     
+    /**
+     * Retrieves the current item count for a customer at the front of the queue.
+     * @param arrNo
+     * @return item count for the front customer.
+     */
     public int getCurrentQueueFrontItems(int arrNo){
 
         return arr[arrNo].getFrontCustomerItemCount();
@@ -137,7 +124,8 @@ public class CheckOutSimulator {
     }
     
     /**
-     * 
+     * Traverses each Checkout line in the array.
+     * Retrieves 
      * @return 
      */
     public int getGlobalCustomerItemCount(){
@@ -146,14 +134,14 @@ public class CheckOutSimulator {
         
         for(int i = 0; i < arr.length; i++){
             
-            items += arr[i].getCurrentGlobalItemCount();
+            items += arr[i].getLocalItemCount();
         }
         return items;
     }
     
    /**
-    * 
-    * @return 
+    * Queries each array position for its length.
+    * @return a summation of each resident customer count.
     */
     public int getGlobalCustomerCount(){
         int count = 0;
