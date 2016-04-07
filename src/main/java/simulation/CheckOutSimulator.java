@@ -42,24 +42,32 @@ public class CheckOutSimulator {
     /**
      * Adds desired number of shoppers
      * @param customerCount
+     * @param choice
      */
-    public void addCustomers(int customerCount){
+    public void addCustomers(int customerCount, boolean choice){
         
         for(int i = 0; i < customerCount; i++){
             Customer c = new Customer();
             System.out.print(i + " ");
             System.out.println(c.getItemCount());
             consumers.add(c);
-            chooseLine(c);
+            
+            if(!choice){
+                chooseLine_leastItems(c);
+                System.out.println("Least item selected");
+            } else {
+                chooseLine_leastCustomers(c);
+                System.out.println("Least cust selected");
+            }
         }
     }
     
     /**
-     * This bit will be O(n)
-     * Unsorted array.
+     * Chooses line with least items from unsorted arrays of queues.
+     * O(n), Items retrieval O(n)
      * @param c
      */
-    public void chooseLine(Customer c){
+    public void chooseLine_leastItems(Customer c){
         
         int least = 0;
         int i = 0;
@@ -84,7 +92,35 @@ public class CheckOutSimulator {
     }
     
     /**
-     * 
+     * Chooses the smallest Queue in an unsorted array of Queues.
+     * O(n), Customer retrieval O(1)
+     * @param c the customer to add
+     */
+    public void chooseLine_leastCustomers(Customer c){
+        
+        int least = 0;
+        int i = 0;
+        int arrayNo = 0;
+        
+        for(CheckOutLine l : arr){
+            
+            if(i == 0){
+                least = l.getCustomerCount();
+            } else if(i > 0 && least > l.getCustomerCount()){
+                
+                least = l.getCustomerCount();
+                arrayNo = i;
+            }
+            i++;
+        }
+        CheckOutLine l = arr[arrayNo];
+        l.addCustomer(c);
+    }
+    
+    /**
+     * Invokes the processCustomer method for each
+     * customer at the front of their respective queue.
+     * Removes 1 item per tick.
      */
     public void processCustomerPerArr(){
         

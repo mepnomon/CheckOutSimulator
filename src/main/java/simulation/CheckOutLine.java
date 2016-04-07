@@ -54,14 +54,14 @@ public class CheckOutLine{
      */
     public int getLocalItemCount(){
         
-        int globalItemCount = 0;
+        int localItemCount = 0;
         
         for(Customer s : line){
             
-            globalItemCount += s.getItemCount();
+            localItemCount += s.getItemCount();
         }
         
-        return globalItemCount;
+        return localItemCount;
     }
     
     
