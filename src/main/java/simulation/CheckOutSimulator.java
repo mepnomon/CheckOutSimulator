@@ -7,14 +7,11 @@ import java.util.ArrayList;
  * 
  * This class allows for the simulation 
  * to be displayed in main.
- * 
- * Press s for new shopper
  * @author eeu436
  */
 public class CheckOutSimulator {
     
-    Customer shoppers;
-    ArrayList <Customer> consumers;
+    //ArrayList <Customer> consumers;
     CheckOutLine[] arr;
     
     /**
@@ -23,7 +20,7 @@ public class CheckOutSimulator {
     public CheckOutSimulator(){
         
         arr = new CheckOutLine[5];
-        consumers = new ArrayList<>();
+        //consumers = new ArrayList<>();
         
     }
     
@@ -40,9 +37,9 @@ public class CheckOutSimulator {
     }
     
     /**
-     * Adds desired number of shoppers
-     * @param customerCount
-     * @param choice
+     * Adds desired number of shoppers to queues, with chosen algorithm.
+     * @param customerCount the number of customer objects to instantiate.
+     * @param choice a boolean that determines which algorithm is selected.
      */
     public void addCustomers(int customerCount, boolean choice){
         
@@ -50,7 +47,7 @@ public class CheckOutSimulator {
             Customer c = new Customer();
             System.out.print(i + " ");
             System.out.println(c.getItemCount());
-            consumers.add(c);
+            //consumers.add(c);
             
             if(!choice){
                 chooseLine_leastItems(c);
@@ -139,7 +136,7 @@ public class CheckOutSimulator {
      * Retrieves the global item count for each checkout line individually.
      * @return the item count of each checkout line.
      */
-    public int getCurrentGlobalItemsPerQueue(int arrNo){
+    public int getCurrentLocalItemsPerQueue(int arrNo){
          
         return arr[arrNo].getLocalItemCount();
     }
@@ -154,6 +151,11 @@ public class CheckOutSimulator {
         return arr[arrNo].getFrontCustomerItemCount();
     }
     
+    /**
+     * Calls the getCustomerCount() method for the selected array.
+     * @param arrNo the number of the array selected
+     * @return the number of customers in selected array.
+     */
     public int getCustomerCountPerQueue(int arrNo){
         
         return arr[arrNo].getCustomerCount();
@@ -161,8 +163,8 @@ public class CheckOutSimulator {
     
     /**
      * Traverses each Checkout line in the array.
-     * Retrieves 
-     * @return 
+     * Sums all items per array.
+     * @return the sum of all items in all arrays.
      */
     public int getGlobalCustomerItemCount(){
         
