@@ -45,16 +45,16 @@ public class CheckOutSimulator {
         
         for(int i = 0; i < customerCount; i++){
             Customer c = new Customer();
-            System.out.print(i + " ");
-            System.out.println(c.getItemCount());
+            System.out.print("Customer " + i + ": ");
+            System.out.println(c.getItemCount() + " items");
             //consumers.add(c);
             
             if(!choice){
                 chooseLine_leastItems(c);
-                System.out.println("Least item selected");
+                //System.out.println("Least item selected");
             } else {
                 chooseLine_leastCustomers(c);
-                System.out.println("Least cust selected");
+                //System.out.println("Least cust selected");
             }
         }
     }
@@ -80,10 +80,8 @@ public class CheckOutSimulator {
                 arrayNo = i;
             }
             i++;
-            System.out.println(l.getLocalItemCount());
         }
-        System.out.println("Queue with least items: " + least);
-        System.out.println("Adding to check out no." + arrayNo);
+        System.out.println("Adding to " + arrayNo + " with " + least + " items");
         CheckOutLine l = arr[arrayNo];
         l.addCustomer(c);
     }
@@ -110,6 +108,7 @@ public class CheckOutSimulator {
             }
             i++;
         }
+        System.out.println("Adding to " + arrayNo + " with " + least + " customer(s)");
         CheckOutLine l = arr[arrayNo];
         l.addCustomer(c);
     }
