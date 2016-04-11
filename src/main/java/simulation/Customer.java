@@ -3,6 +3,8 @@ package simulation;
 import java.util.Random;
 
 /**
+ * ICP 2027 - Assignment 1
+ * Class: Customer
  * Date: 19-Mar-2016
  * 
  * @author eeu436

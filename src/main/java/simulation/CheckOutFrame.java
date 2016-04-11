@@ -4,7 +4,10 @@ import java.io.PrintStream;
 import javax.swing.JProgressBar;
 
 /**
- *
+ * ICP 2027 - Assignment 1
+ * Class: CheckoutLine
+ * Date: 07-Apr-2016
+ * 
  * @author eeu436
  */
 public class CheckOutFrame extends javax.swing.JFrame {

@@ -1,8 +1,9 @@
 package simulation;
 
-import java.util.ArrayList;
-
 /**
+ * ICP 2027 - Assignment 1
+ * Class: CheckOutSimulator
+ * 
  * Date: 19-Mar-2016
  * 
  * This class allows for the simulation 
